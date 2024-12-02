@@ -3,21 +3,26 @@ package utils
 import (
 	"fmt"
 	"log/slog"
+	"math"
 	"os"
 )
 
 func ReadInput(day, part int) *os.File {
-	suffix := ""
+	suffix := "input"
 
 	if os.Getenv("TEST") == "1" {
-		suffix = "t"
+		suffix = "test"
 	}
 
-	fileName := fmt.Sprintf("./Inputs/%02d-%s%d.txt", day, suffix, part)
+	fileName := fmt.Sprintf("./inputs/%02d-%d.%s", day, part, suffix)
 	file, err := os.Open(fileName)
 	if err != nil {
 		slog.Error(err.Error())
 	}
 
 	return file
+}
+
+func Distance(lhs, rhs int) int {
+	return int(math.Abs(float64(lhs) - float64(rhs)))
 }

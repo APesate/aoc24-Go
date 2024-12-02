@@ -1,4 +1,4 @@
-package main
+package days
 
 import (
 	"aoc24/internal/utils"
@@ -77,7 +77,7 @@ func calcSimilarity(l []string, m map[string]int) int {
 	return total
 }
 
-func main() {
+func DayOne() {
 	file := utils.ReadInput(1, 1)
 	defer file.Close()
 
