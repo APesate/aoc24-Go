@@ -12,7 +12,9 @@ import (
 	"strings"
 )
 
-func makeListsFromFile(file *os.File) ([]string, []string) {
+type DayOne struct{}
+
+func (d *DayOne) makeListsFromFile(file *os.File) ([]string, []string) {
 	scanner := bufio.NewScanner(file)
 	lhs := make([]string, 0, 1000)
 	rhs := make([]string, 0, 1000)
@@ -34,7 +36,7 @@ func makeListsFromFile(file *os.File) ([]string, []string) {
 	return lhs, rhs
 }
 
-func makeMapFromFile(file *os.File) ([]string, map[string]int) {
+func (d *DayOne) makeMapFromFile(file *os.File) ([]string, map[string]int) {
 	scanner := bufio.NewScanner(file)
 	lhs := make([]string, 0, 1000)
 	entriesMap := make(map[string]int, 0)
@@ -55,7 +57,7 @@ func makeMapFromFile(file *os.File) ([]string, map[string]int) {
 	return lhs, entriesMap
 }
 
-func calcDistances(lhs, rhs []string) int {
+func (d *DayOne) calcDistances(lhs, rhs []string) int {
 	total := 0
 	for i, s := range lhs {
 		l, _ := strconv.Atoi(s)
@@ -66,7 +68,7 @@ func calcDistances(lhs, rhs []string) int {
 	return total
 }
 
-func calcSimilarity(l []string, m map[string]int) int {
+func (d *DayOne) calcSimilarity(l []string, m map[string]int) int {
 	total := 0
 
 	for _, v := range l {
@@ -77,7 +79,7 @@ func calcSimilarity(l []string, m map[string]int) int {
 	return total
 }
 
-func DayOne() {
+func (d *DayOne) Run() {
 	file := utils.ReadInput(1, 1)
 	defer file.Close()
 
@@ -86,6 +88,6 @@ func DayOne() {
 	// fmt.Printf("Total distance: %d", calcDistances(lhs, rhs))
 
 	// Part 2
-	lhs, rhsm := makeMapFromFile(file)
-	fmt.Printf("Part 2: %d", calcSimilarity(lhs, rhsm))
+	lhs, rhsm := d.makeMapFromFile(file)
+	fmt.Printf("Part 2: %d", d.calcSimilarity(lhs, rhsm))
 }
