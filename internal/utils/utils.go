@@ -26,3 +26,15 @@ func ReadInput(day, part int) *os.File {
 func Distance(lhs, rhs int) int {
 	return int(math.Abs(float64(lhs) - float64(rhs)))
 }
+
+// Reducer is a type for reduce function signatures
+type Reducer[T, R any] func(R, T) R
+
+// Reduce is a generic function that reduces a slice using a reducer function
+func Reduce[T, R any](slice []T, initial R, reducer Reducer[T, R]) R {
+	result := initial
+	for _, v := range slice {
+		result = reducer(result, v)
+	}
+	return result
+}

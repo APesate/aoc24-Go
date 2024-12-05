@@ -102,6 +102,7 @@ func (d *DayFour) bfs(graph [][]byte, strt point, word []byte) int {
 
 func (d *DayFour) Run() {
 	file := utils.ReadInput(4, 1)
+	defer file.Close()
 	input := d.processInput(file)
 	// fmt.Println(d.wordSearch(input, xmas)) // Part 1
 	fmt.Println(d.findXmas(input)) // part 2
