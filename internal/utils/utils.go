@@ -38,3 +38,20 @@ func Reduce[T, R any](slice []T, initial R, reducer Reducer[T, R]) R {
 	}
 	return result
 }
+
+func IsRowInBounds[T any](grid [][]T, row int) bool {
+	return row >= 0 && row < len(grid)
+}
+
+func IsColInBounds[T any](grid [][]T, col int) bool {
+	return col >= 0 && col < len(grid[0])
+}
+
+func CopyGrid(grid [][]byte) [][]byte {
+	newGrid := make([][]byte, len(grid))
+	for i := range grid {
+		newGrid[i] = make([]byte, len(grid[i]))
+		copy(newGrid[i], grid[i])
+	}
+	return newGrid
+}
