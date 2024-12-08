@@ -2,9 +2,11 @@ package utils
 
 import (
 	"fmt"
+	"log"
 	"log/slog"
 	"math"
 	"os"
+	"time"
 )
 
 func ReadInput(day, part int) *os.File {
@@ -54,4 +56,9 @@ func CopyGrid(grid [][]byte) [][]byte {
 		copy(newGrid[i], grid[i])
 	}
 	return newGrid
+}
+
+func TimeTrack(start time.Time, name string) {
+	elapsed := time.Since(start)
+	log.Printf("%s took %s", name, elapsed)
 }
