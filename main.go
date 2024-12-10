@@ -10,6 +10,7 @@ func main() {
 	// d := days.DayFive{}
 	// d := days.DaySix{}
 	// d := days.DaySeven{}
-	d := days.DayEight{}
+	// d := days.DayEight{}
+	d := days.DayNine{}
 	d.Run()
 }
