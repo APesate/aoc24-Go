@@ -6,6 +6,7 @@ import (
 	"log/slog"
 	"math"
 	"os"
+	"strconv"
 	"time"
 )
 
@@ -61,4 +62,9 @@ func CopyGrid(grid [][]byte) [][]byte {
 func TimeTrack(start time.Time, name string) {
 	elapsed := time.Since(start)
 	log.Printf("%s took %s", name, elapsed)
+}
+
+func StringToInt(s string) int {
+	n, _ := strconv.Atoi(s)
+	return n
 }
